@@ -374,6 +374,12 @@ sub get_memcnt {
 
 }
 
+sub h {
+
+	return html_output_escape($_[0]);
+
+}
+
 sub html_output_escape {
 
     my $str = shift;
