@@ -426,7 +426,9 @@ sub login {
     my $values;
     foreach (keys %FORM) {
         next if $_ eq 'id' or $_ eq 'passwd';
-        $values .= qq|<input type=hidden name=$_ value="$FORM{$_}">\n|;
+        my $f = h($_);
+        my $v = h($FORM{$_});
+        $values .= qq|<input type="hidden" name="$f" value="$v">\n|;
     }
     my($id, $passwd) = get_cookie("PSL_ML_CACHE");
     my $do_cache = $id ? "checked" : "";
@@ -445,7 +447,9 @@ sub login_admin {
     my $values;
     foreach (keys %FORM) {
         next if $_ eq 'id' or $_ eq 'passwd';
-        $values .= qq|<input type=hidden name=$_ value="$FORM{$_}">\n|;
+        my $f = h($_);
+        my $v = h($FORM{$_});
+        $values .= qq|<input type="hidden" name="$f" value="$v">\n|;
     }
 
     my $passwd = get_cookie("PSL_ML_ADMIN_CACHE");
