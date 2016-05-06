@@ -1,0 +1,48 @@
+<!-- header_admin -->
+
+<h2>メール文章編集(##mailstrname##)</h2>
+
+<a href=ml_admin.cgi>管理用ページへ</a><p>
+
+メールの件名と本文を編集できます。<p>
+
+<form action=ml_admin.cgi method=post>
+<input type=hidden name=mailstr_done value="##mailstr##">
+
+<table border cellpadding=1 cellspacing=0>
+<tr><td>件名</td><td><input name=subject value="##subject##" size=50></td></tr>
+<tr><td>本文</td><td><textarea name=body cols=70 rows=16 wrap=off>##body##</textarea></td></tr></table><p>
+
+<input type=submit value="登録する"><p>
+</form>
+
+以下の文字列を使うと、それぞれシステムに設定されている値を埋め込みます。ただし、件名に使用できるのはこのうち <tt>##title##</tt> だけです。<p>
+
+<table border cellpadding=1 cellspacing=0>
+<tr><td rowspan=2 align=center>埋め込む文字列</td><td rowspan=2 align=center>意味</td><td rowspan=2 align=center>件名</td>
+<td colspan=3 align=center>本　　文</td></tr>
+<tr><td>仮登録</td><td>登録完了</td><td>仮変更</td></tr>
+<tr><td><tt>##title##</tt></td><td>このシステムの名称</td>
+<td align=center>○</td><td align=center>○</td><td align=center>○</td><td align=center>○</td>
+</tr>
+<tr><td><tt>##key##</tt></td><td>仮登録/仮変更時に発行される登録キー(12文字)</td>
+<td align=center>×</td><td align=center>○</td><td align=center>×</td><td align=center>○</td>
+</tr>
+<tr><td><tt>##id##</tt></td><td>本登録時に発行されるID</td>
+<td align=center>×</td><td align=center>×</td><td align=center>○</td><td align=center>×</td>
+</tr>
+<tr><td><tt>##passwd##</tt></td><td>本登録時に発行されるパスワード</td>
+<td align=center>×</td><td align=center>×</td><td align=center>○</td><td align=center>×</td>
+</tr>
+<tr><td><tt>##email##</tt></td><td>登録者のメールアドレス</td>
+<td align=center>×</td><td align=center>○</td><td align=center>○</td><td align=center>○</td>
+</tr>
+<tr><td><tt>##k_email##</tt></td><td>管理人のメールアドレス</td>
+<td align=center>×</td><td align=center>○</td><td align=center>○</td><td align=center>○</td>
+</tr>
+<tr><td><tt>##ml_dir##</tt></td><td>このメーリングリストを置くディレクトリ</td>
+<td align=center>×</td><td align=center>○</td><td align=center>○</td><td align=center>○</td>
+</tr>
+</table><p>
+
+<!-- footer -->

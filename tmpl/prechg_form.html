@@ -1,0 +1,20 @@
+<!-- header -->
+
+<h2>##conf:title## 送信先変更</h2>
+
+送信先のアドレスを変更します。メールアドレスを入力して変更ボタンを押してください。<br>
+変更したメールアドレス宛に確認のメールが届きますので、そのメールに記載されているURLにアクセスして変更を完了させてください。<p>
+
+現在登録されているメールアドレス : <tt><b>##email##</b></tt><p>
+
+<form action=ml_chg.cgi method=post>
+<input type=hidden name=prechg value=1>
+<table border cellpadding=3 cellspacing=0 align=center>
+<tr>
+<th>メールアドレス</th><td><input name=email size=40>(必ず半角で!)</td>
+<td><input type=submit value=仮変更する></td>
+</tr>
+</table><p>
+</form>
+
+<!-- footer -->

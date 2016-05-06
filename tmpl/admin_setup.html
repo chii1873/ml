@@ -1,0 +1,146 @@
+<!-- header_admin -->
+
+<h2>システム設定</h2>
+
+<a href=ml_admin.cgi>管理用ページへ</a><p>
+
+<form action=ml_admin.cgi method=post>
+<input type=hidden name=setup_done value=1>
+
+<input type=submit value="登録する"><p>
+
+<table border cellpadding=1 cellspacing=0>
+<tr>
+<td>(1)管理人のE-mailアドレス</td>
+<td><input name=k_email size=50 value="##k_email##"><br>
+(差出人名)<input name="fromname" size="30" value="##fromname##"><br>
+※差出人名を指定すると、管理人からのメール送信時に、Fromヘッダを <tt>&quot;差出人名&quot; &lt;mail@address&gt;</tt> のように設定します。
+</td>
+</tr>
+
+<tr>
+<td>(2)メーリングリストのタイトル</td>
+<td><input name=title size=50 value="##title##"></td>
+</tr>
+
+<tr>
+<td>(3)自動付加する文字列</td>
+<td><input name=subject_prefix size=30 value="##subject_prefix##"><br>
+<ul>
+<li>このシステムで送られるメールの件名の冒頭に付加する文字列を指定できます。<tt>&#35;</tt> はメールの通し番号(桁数)に置き換わります。
+<li><tt>&#35;</tt> の数を多く設定すると、通し番号がその桁数に満たない場合に 0 で桁を埋める処理をします。
+<blockquote>
+   (例)<br>
+   <input size=30 value="[test-ml:&#35;&#35;&#35;&#35;]"><br>
+   と指定したとき、通し番号が4の場合、 <tt>[test-ml:0004]</tt> となります。
+</blockquote>
+<li><tt>&#35;</tt> の数より通し番号の桁数の方が大きいときは、通し番号の桁数になります。
+<blockquote>
+   (例)<br>
+   <input size=30 value="[test-ml:&#35;]"><br>
+   と指定したとき、通し番号が10の場合、 <tt>[test-ml:10]</tt> となります。
+</blockquote>
+
+<li>何も指定しないと何も付加されません。
+<blockquote>
+   (例)<br>
+   <input size=30 value=""><br>
+   とすると、送信者が設定した件名のまま配信されます。
+</blockquote>
+
+</td>
+</tr>
+
+<tr>
+<td>(4)メインページの紹介文</td>
+<td><textarea name=mainpage_info cols=70 rows=8 wrap=off>##mainpage_info##</textarea><br>
+<ul><li>HTMLに埋め込まれます。タグはそのまま使えます。</ul></td>
+</tr>
+
+<tr>
+<td>(5)各種パラメータ設定</td>
+<td>
+<table border cellpadding=1 cellspacing=0>
+<tr><td>登録完了時にintroメールを送るか</td><td><input type=radio name=send_intro value=1 ##send_intro:1##>送る　<input type=radio name=send_intro value=0 ##send_intro:0##>送らない</td></tr>
+<tr><td>過去の投稿の取り寄せ機能</td><td><input type=radio name=enable_get_archive value=1 ##enable_get_archive:1##>有効　<input type=radio name=enable_get_archive value=0 ##enable_get_archive:0##>無効</td></tr>
+<tr><td>メンバーからの投稿を許可するか</td><td><input type=radio name=enable_post value=1 ##enable_post:1##>する　<input type=radio name=enable_post value=0 ##enable_post:0##>しない</td></tr>
+<tr><td>ファイル添付を許可するか</td><td><input type=radio name=enable_attachment value=1 ##enable_attachment:1##>許可する　<input type=radio name=enable_attachment value=0 ##enable_attachment:0##>許可しない<br>
+<table border cellpadding=1 cellspacing=0>
+<tr><td>ファイル添付の上限</td><td><select name=attachment>
+<option ##attachment:1##>1
+<option ##attachment:2##>2
+<option ##attachment:3##>3
+<option ##attachment:4##>4
+<option ##attachment:5##>5
+</select>つまで</td></tr>
+<tr><td>ファイルサイズの上限</td><td>
+<input name=attachment_sizemax value="##attachment_sizemax##" size=5>kB/ファイル (0=無制限)
+</td></tr>
+<tr><td>ファイルタイプ</td><td>
+<input name=attachment_ext value="##attachment_ext##" size=30><br>
+(拡張子をカンマ区切り指定、空欄は制限なし)</td></tr>
+</table>
+</td></tr>
+<tr><td>ヘッダ((10)で設定)を付加するか</td><td><input type=radio name=add_ml_header value=1 ##add_ml_header:1##>する　<input type=radio name=add_ml_header value=0 ##add_ml_header:0##>しない</td></tr>
+<tr><td>フッタ((11)で設定)を付加するか</td><td><input type=radio name=add_ml_footer value=1 ##add_ml_footer:1##>する　<input type=radio name=add_ml_footer value=0 ##add_ml_footer:0##>しない</td></tr>
+</table></td>
+</tr>
+
+<tr>
+<td>(6)sendmailコマンド</td>
+<td><input name=sendmail size=40 value="##sendmail##"><br>
+<ul><li>sendmailコマンドをフルパスで指定してください。</ul></td>
+</tr>
+
+<tr>
+<td>(7)このメーリングリストを置く<br>ディレクトリのURL</td>
+<td><input name=ml_dir size=60 value="##ml_dir##"><br>
+<ul><li>末尾に / はつけないでください。</ul></td>
+</tr>
+<tr>
+<td>(8)このメーリングリストの<br>メインページURL</td>
+<td><input name=mainpage size=60 value="##mainpage##"></td>
+</tr>
+<tr>
+<td>(9)あなたのホームページ<br>のURL</td>
+<td><input name=home size=60 value="##home##"></td>
+</tr>
+
+<tr>
+<td>(10)メールヘッダ指定</td>
+<td><textarea name=ml_header cols=70 rows=6 wrap=off>##ml_header##</textarea><br>
+<ul><li>配信されるメールの冒頭(ヘッダ)に付加する情報を指定します。
+<li>(5)のパラメータ設定のところで「付加しない」に設定されている場合は、以下の文字列の指定にかかわらず付加されません。
+<li>以下の文字列を使うと、それぞれシステムに設定されている値を埋め込みます。
+<ul>
+<li><tt>&#35;&#35;title&#35;&#35;</tt>   … このシステムの名称
+<li><tt>&#35;&#35;k_email&#35;&#35;</tt> … 管理人のメールアドレス
+<li><tt>&#35;&#35;ml_dir&#35;&#35;</tt>  … このメーリングリストを置くディレクトリ
+<li><tt>&#35;&#35;ml_cnt&#35;&#35;</tt>  … 投稿番号
+<li><tt>&#35;&#35;home&#35;&#35;</tt>    … あなたのメインホームページのURL
+</ul>
+</ul></td>
+</tr>
+
+<tr>
+<td>(11)メールフッタ指定</td>
+<td><textarea name=ml_footer cols=70 rows=6 wrap=off>##ml_footer##</textarea><br>
+<ul><li>配信されるメールの末尾(フッタ)に付加する情報を指定します。
+<li>(5)のパラメータ設定のところで「付加しない」に設定されている場合は、以下の文字列の指定にかかわらず付加されません。
+<li>以下の文字列を使うと、それぞれシステムに設定されている値を埋め込みます。
+<ul>
+<li><tt>&#35;&#35;title&#35;&#35;</tt>   … このシステムの名称
+<li><tt>&#35;&#35;k_email&#35;&#35;</tt> … 管理人のメールアドレス
+<li><tt>&#35;&#35;ml_dir&#35;&#35;</tt>  … このメーリングリストを置くディレクトリ
+<li><tt>&#35;&#35;ml_cnt&#35;&#35;</tt>  … 投稿番号
+<li><tt>&#35;&#35;home&#35;&#35;</tt>    … あなたのメインホームページのURL
+<li><tt>&#35;&#35;idpw&#35;&#35;</tt>    … 簡易暗号化された購読者のIDとパスワード(個々のメールに差し込まれます)
+</ul>
+</ul></td>
+</tr>
+</table><p>
+
+<input type=submit value="登録する">
+</form><p>
+
+<!-- footer -->

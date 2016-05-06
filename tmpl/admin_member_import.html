@@ -1,0 +1,25 @@
+<!-- header_admin -->
+
+<h2>メンバーデータの一括登録</h2>
+
+<a href=ml_admin.cgi>管理用ページへ</a><p>
+
+メンバーデータの一括登録をします。
+以下の形式のタブ区切りファイルをアップロードしてください。<p>
+
+<table border cellpadding=2 cellspacing=0>
+<tr bgcolor=#ccddff><td>フィールド順</td><td>フィールド名</td><td>説明</td></tr>
+<tr><td align=right>1&nbsp;</td><td>メンバーID</td><td>半角数字4ケタ すでに登録されている場合は上書き登録されます</td></tr>
+<tr><td align=right>2&nbsp;</td><td>パスワード</td><td>半角英数字8ケタ程度</td></tr>
+<tr><td align=right>3&nbsp;</td><td>メールアドレス</td><td>重複禁止です(上書きの場合を除く)。</td></tr>
+<tr><td align=right>4&nbsp;</td><td>登録日時</td><td>YYYY-MM-DD HH:MI:SS 形式。空欄にすると一括登録をした時刻となります</td></tr>
+<tr><td align=right>5&nbsp;</td><td>最終更新日時</td><td>フィールドの値にかかわらず一括登録をした時刻に上書きされます。</td></tr>
+</table><p>
+
+<form action=ml_admin.cgi method=post enctype="multipart/form-data">
+<input type=hidden name="import_confirm" value=1>
+テキストファイル：<input type=file name=file size=40><p>
+<input type=submit value="→アップロード確認画面へ">
+</form>
+
+<!-- footer -->

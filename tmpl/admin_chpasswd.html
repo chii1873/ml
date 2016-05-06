@@ -1,0 +1,18 @@
+<!-- header_admin -->
+
+<h2>管理用パスワードの変更</h2>
+
+変更したいパスワードを2回入力して変更ボタンを押してください。<p>
+
+<form action=ml_admin.cgi method=post name=myform>
+<input type=hidden name=chpasswd2 value=1>
+
+パスワードを入力：<input type=password name=passwd size=12 value="">(半角英数8文字以内)<p>
+
+もう一度入力：<input type=password name=passwd2 size=12 value="">(半角英数8文字以内)<p>
+
+
+<input type=submit value="変更">
+</form><p>
+
+<!-- footer -->

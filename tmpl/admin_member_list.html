@@ -1,0 +1,44 @@
+<!-- header_admin -->
+
+<h2>メンバー一覧</h2>
+
+<a href=ml_admin.cgi>管理用メニューへ</a>　
+<a href=ml_admin.cgi?reg>新規登録</a><p>
+
+<form action=ml_admin.cgi method=post>
+<input type=hidden name=list value=1>
+メールアドレス検索：<input name=s value="##s##" size=30>
+<input type=submit value="検索">
+
+<table>
+<tr><td>
+
+<table width=100%>
+<tr><td>##prev##</td>
+<td align=center>##page##</td>
+<td align=right>##next##</td></tr>
+<tr><td colspan=3 height=5></td></tr>
+</table>
+
+<table border cellpadding=2 cellspacing=0>
+<tr bgcolor=#eeeeff>
+<td>ID</td><td>パスワード</td>
+<td>配信先</td><td>登録日時</td>
+<td>修正/変更</td></tr>
+
+##list##
+
+</table>
+
+<table width=100%>
+<tr><td colspan=3 height=5></td></tr>
+<tr><td>##prev##</td>
+<td align=center>##page##</td>
+<td align=right>##next##</td></tr>
+</table>
+</td></tr>
+</table><p>
+</form>
+
+
+<!-- footer -->

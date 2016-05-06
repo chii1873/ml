@@ -1,0 +1,56 @@
+<!-- header_admin -->
+
+<h2>メンバーデータ変更</h2>
+
+下記のデータの必要部分を修正することができます。<br>
+削除する場合は削除ボタンを押してください。<p>
+
+<form action=ml_admin.cgi method=post name=myform>
+<input type=hidden name=p value="##p##">
+<input type=hidden name=mod2 value=1>
+<input type=hidden name=id value="##id##">
+<input type=hidden name=del value=0>
+
+<table border cellpadding=2 cellspacing=0>
+<tr><td>ID</td><td>##id##</td></tr>
+<tr><td>パスワード</td>
+<td><input name=passwd size=12 value="##passwd##">
+<a href=javascript:set_passwd()>パスワードを自動生成する</a>
+</td></tr>
+<tr><td>配信先</td>
+<td><input name=email size=40 value="##email##"></td></tr>
+<tr><td>登録日時</td><td>##reg_date##</td></tr>
+<tr><td>最終更新日時</td><td>##last_update##</td></tr>
+</table><p>
+
+<input type=button value="戻　る" onclick=history.back()>
+<input type=submit value="修正する">
+　　　　　　　
+<input type=button value=このメンバーを削除する onclick=delconfirm()>
+</form><p>
+
+<script language="JavaScript">
+<!--
+function set_passwd () {
+    var charset = new Array("0","1","2","3","4","5","6","7","8","9");
+    var passwd = "";
+    for (i = 0; i < 8; i++) {
+        var r = Math.floor(Math.random() * 10);
+        passwd = passwd + charset[r];
+    }
+    document.myform.passwd.value = passwd;
+}
+
+function delconfirm() {
+
+    if (confirm("このメンバーのデータを削除します。よろしいですか?")) {
+        document.myform.del.value="1";
+        document.myform.submit();
+    }
+
+}
+
+//-->
+</script>
+
+<!-- footer -->

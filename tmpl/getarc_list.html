@@ -1,0 +1,20 @@
+<!-- header -->
+
+<h2>##conf:title## アーカイブリスト表示</h2>
+
+##cnt## 件のリストを表示します。<p>
+<form action=ml_getarc.cgi method=post>
+<table border cellpadding=2 cellspacing=0>
+<tr><td> No. </td><td> 件名 </td><td> 送信者 </td>
+<td> 添付ファイル </td><td> 送信日 </td></tr>
+##list##
+</table><p>
+
+<input type=hidden name=arc_no value="##arc_no##">
+<input type=hidden name=send value=1>
+<input type=submit value=上記のアーカイブを送信>
+<input type=button value=戻　る onclick=history.back()><p>
+
+</form>
+
+<!-- footer -->

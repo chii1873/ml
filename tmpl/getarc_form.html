@@ -1,0 +1,25 @@
+<!-- header -->
+
+<h2>##conf:title## アーカイブ送信</h2>
+
+過去の投稿を送信します。投稿番号を指定してください。<br>
+処理に時間がかかるため、1度の操作で20通分までの取り寄せとなります。<p>
+
+<form action=ml_getarc.cgi method=post>
+<table border cellpadding=3 cellspacing=0>
+<tr>
+<th>投稿番号</th>
+<td><input name=arc_no size=40><br>
+※複数指定する場合はカンマで区切って指定できます。(例: 1,2,3,8,23,67)<br>
+※連続する番号はハイフンを使って範囲指定できます。(例: 1-3,11-49)<br>
+※半角数字、半角カンマ、ハイフン以外は使用できません。<br>
+※指定した番号の投稿がない場合は無視されます。</td>
+</tr>
+</table><p>
+<input type=hidden name=send value=1>
+<input type=button value=戻る onclick="history.back()">
+<input type=submit value=アーカイブ送信>
+<input type=submit name=list value=件名のリストを見る><p>
+</form>
+
+<!-- footer -->

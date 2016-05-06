@@ -1,0 +1,32 @@
+<!-- header_admin -->
+
+<h2>疑似メーリングリスト 設定ファイル変換プログラム</h2>
+
+<form action=ml_confconv.cgi method=post>
+<input type=hidden name=done value=1>
+
+このプログラムは、疑似メーリングリストv0.24xの設定ファイルデータを読み込み、v0.3の形式に変換します。<p>
+
+<table cellpadding=4>
+<tr><td valign=top bgcolor=#eeeeff><h4>読み込むファイル</h4>
+<tt>ml_conf_org.pl</tt>
+</td>
+<td width=20><h1>→</h1></td>
+<td valign=top bgcolor=#eeeeff><h4>書き出すファイル</h4>
+<tt>ml_conf.pl</tt><br>
+<tt>tmpl/mail_prereg.txt</tt><br>
+<tt>tmpl/mail_prechg.txt</tt><br>
+<tt>tmpl/mail_reg.txt</tt>
+</td>
+</table><p>
+
+読み込む設定ファイルを <tt>ml_conf_org.pl</tt> という名前に変更してサーバに置いてください。
+このファイルがないと処理ができません。<p>
+
+変換後の設定ファイルは、サーバ上に同名のファイルが元からある場合、上書きしてしまいますので、あらかじめバックアップしてください。設定済みのファイルを上書きしてしまったことによる損失については責任を負いかねます。<p>
+
+
+<input type=submit value="変換する">
+<p>
+
+<!-- footer -->

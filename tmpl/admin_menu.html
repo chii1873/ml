@@ -1,0 +1,43 @@
+<!-- header_admin -->
+
+<h2>管理用メニュー</h2>
+
+<form action=ml_admin.cgi method=post>
+<input type=hidden name=list value=1>
+
+<table border=0 cellpadding=5 cellspacing=0>
+<td valign=top><b><a href="ml_admin.cgi?list">登録一覧</a></b></td>
+<td valign=top>登録されているメンバー一覧を表示します。<br>
+<input name=s size=38> <input type=submit value="メールアドレス検索">
+</td></tr>
+
+<tr><td valign=top><b><a href="ml_admin.cgi?export">メンバーデータの<br>バックアップ</a></b></td>
+<td valign=top>メンバーデータをテキストファイルに書き出します。</td></tr>
+<tr><td valign=top><b><a href="ml_admin.cgi?import">メンバーデータ<br>一括登録</a></b></td>
+<td valign=top>メンバーデータの一括登録ができます。</td></tr>
+
+<tr bgcolor="#ffffcc"><td valign=top><b><a href="ml_admin.cgi?mail">メール送信</a></b></td>
+<td valign=top>全登録者にいっせいメールを送ることができます。</td></tr>
+
+<tr><td valign=top><b><a href="ml_admin.cgi?setup">システム設定</a></b></td>
+<td valign=top>設定内容を変更できます。</td></tr>
+
+<tr><td valign=top><b><a href="ml_admin.cgi?chpasswd">管理用パスワード変更</a></b></td>
+<td valign=top>管理用パスワードを変更できます。</td></tr>
+
+<tr><td valign=top><b>メール文章編集</b></td>
+<td valign=top>メールの件名と本文を編集できます。<br>
+<a href="ml_admin.cgi?mailstr=prereg">仮登録メール</a>…登録したメールアドレス宛に本登録用フォームのURLを案内するメールです。<br>
+<a href="ml_admin.cgi?mailstr=prechg">仮変更メール</a>…変更希望したメールアドレス宛に送達チェックをするメールです。<br>
+<a href="ml_admin.cgi?mailstr=reg">登録完了メール</a>…登録完了時に送るメールです。<br>
+<a href="ml_admin.cgi?mailstr=intro">登録時説明(intro)メール</a>…登録完了メールと同じタイミングで、このシステムの操作説明を送ります。
+</td></tr>
+
+<tr><td valign=top><b><a href="ml.cgi">メインメニュー</a></b></td>
+<td valign=top>一般ユーザー用のメニューに移動します。</td></tr>
+<tr><td valign=top><b><a href="ml_admin.cgi?logout">ログアウト</a></b></td>
+<td valign=top>管理メニューを終了します。</td></tr>
+</table>
+</form><p>
+
+<!-- footer -->

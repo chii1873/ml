@@ -1,0 +1,37 @@
+<!-- header -->
+
+<h2>##conf:title## 記事投稿</h2>
+
+以下の内容でよろしければ投稿ボタンを押してください。<br>
+修正するには戻るボタンで前のページへ戻り再操作してください。<p>
+
+<form action=ml_post.cgi method=post>
+<input type=hidden name=post value=1>
+<input type=hidden name=res value="##res##">
+<input type=hidden name=temp value="##temp##">
+<input type=hidden name=subject value="##subject##">
+<input type=hidden name=mailbody value="##mailbody##">
+<input type=hidden name=signiture value="##signiture##">
+
+<table border cellpadding=3 cellspacing=0>
+<tr><th nowrap>種別</th><td>##type_dsp##</td></tr>
+<tr><th>件名</th><td><tt>##subject_dsp##</tt></td></tr>
+<tr><th>本文</th>
+<td><pre><font color=green>        10        20        30        40        50        60        70        80
+---------+---------+---------+---------+---------+---------+---------+---------+</font>
+##mailbody_dsp##</pre></td></tr>
+
+##attach_begin##
+<tr><th>添付ファイル</th><td><tt>##attach_dsp##</tt></td></tr>
+##attach_end##
+
+<tr><td colspan=2><b>REMOTE_HOST: </b>##remote_host##<br>
+<b>USER_AGENT: </b>##ua##<br>
+※上記の情報は送信されるメールのヘッダに付加されます。
+</td></tr>
+</table><p>
+<input type=submit value=投稿する>
+<input type=button value=戻　る onclick=history.back()><p>
+</form>
+
+<!-- footer -->

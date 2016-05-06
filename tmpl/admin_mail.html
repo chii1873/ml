@@ -1,0 +1,32 @@
+<!-- header_admin -->
+
+<h2>いっせいメール送信</h2>
+
+送信内容を入力して送信ボタンを押してください。<br>
+署名欄に署名を入力するとシステムに記憶され、次回以降使うことができます。<p>
+
+<form action=ml_admin.cgi method=post enctype="multipart/form-data">
+<input type=hidden name=confirm value=1>
+
+<table border cellpadding=3 cellspacing=0>
+<tr><td colspan=2><b>From</b> : <tt>##conf:k_email##</tt></td></tr>
+<tr><td colspan=2><input type=checkbox name=as_ml value=1 checked>メーリングリストの投稿として送信する</td></tr>
+<tr><th>件名</th><td><input name=subject size=50></td></tr>
+<tr><th>本文</th>
+<td><textarea name=mailbody cols=64 rows=9 wrap=off></textarea><br>
+※半角70文字程度で改行を入れてください。
+</td></tr><tr><th>署名</th>
+<td><textarea name=signiture cols=64 rows=4 wrap=off>##signiture##</textarea><br>
+※本文の末尾に付加されます。</td></tr>
+
+##attach_begin##
+<tr><th>添付ファイル</th><td>##attach_list##<br>
+※添付できるファイルサイズの上限は [ ##attachment_sizemax_dsp## ] です。<br>
+※添付できるファイルタイプは、[ ##attachment_ext_dsp## ] です。
+</td></tr>
+##attach_end##
+
+</table><p>
+<input type=submit value=→送信確認画面へ><p>
+
+<!-- footer -->

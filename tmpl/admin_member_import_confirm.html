@@ -1,0 +1,24 @@
+<!-- header_admin -->
+
+<h2>メンバーデータの一括登録</h2>
+
+<a href=ml_admin.cgi>管理用ページへ</a><p>
+
+アップロードされたデータは、<font color=green>新規</font>=##new##件、<font color=red>更新</font>=##mod##件です。<br>
+最初の50件分を表示します。この内容でよければ「登録する」ボタンを押してください。<p>
+
+<table border cellpadding=2 cellspacing=0>
+<tr bgcolor=#ccddff><td>処理</td><td>ID</td><td>パスワード</td><td>メールアドレス</td>
+<td>登録日時</td><td>更新日時</td></tr>
+##list##
+</table><p>
+
+<form action=ml_admin.cgi method=post>
+<input type=hidden name="import_done" value=1>
+<input type=hidden name="temp" value="##temp##">
+<input type=button value="戻る" onclick="history.back()">
+<input type=submit value="登録する">
+
+</form>
+
+<!-- footer -->

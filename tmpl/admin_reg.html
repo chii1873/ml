@@ -1,0 +1,28 @@
+<!-- header_admin -->
+
+<h2>メンバーデータ新規登録</h2>
+
+メンバーを新たに登録することができます。<p>
+
+<form action=ml_admin.cgi method=post name=myform>
+<input type=hidden name=p value="##p##">
+<input type=hidden name=s value="##s##">
+<input type=hidden name=reg2 value=1>
+
+<table border cellpadding=2 cellspacing=0>
+<tr><td>ID</td><td><input name=id size=6 value="">
+※半角数字4ケタで指定してください。空欄のままにすると自動付番となります。
+</td></tr>
+<tr><td>パスワード</td>
+<td><input name=passwd size=12 value="">
+<a href=javascript:set_passwd()>パスワードを自動生成する</a>
+</td></tr>
+<tr><td>配信先</td>
+<td><input name=email size=50 value=""> ※半角英数で！</td></tr>
+</table><p>
+
+<input type=button value="戻　る" onclick=history.back()>
+<input type=submit value="登録する">
+</form><p>
+
+<!-- footer -->

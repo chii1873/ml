@@ -1,0 +1,37 @@
+<!-- header -->
+
+<h2>##conf:title## 記事投稿</h2>
+
+投稿記事を入力して発言ボタンを押してください。<br>
+署名欄に署名を入力するとシステムに記憶され、次回以降使うことができます。<p>
+
+<form action=ml_post.cgi method=post enctype="multipart/form-data">
+<input type=hidden name=confirm value=1>
+<input type=hidden name=res value="##res##">
+<input type=hidden name=type value="##type_dsp##">
+
+<table border cellpadding=3 cellspacing=0>
+<tr><td colspan=2><b>From</b> : <tt>##email##</tt></td></tr>
+<tr><th>種別</th><td>##type_dsp##</td></tr>
+<tr><th>件名</th>
+<td><input name=subject value="##res_subject##" size=50></td></tr>
+<tr><th>本文</th>
+<td><textarea name=mailbody cols=64 rows=9 wrap=off>##res_mailbody##</textarea><br>
+※半角70文字程度で改行を入れてください。
+</td></tr><tr><th>署名</th>
+<td><textarea name=signiture cols=64 rows=4 wrap=off>##signiture##</textarea><br>
+※本文の末尾に付加されます。</td></tr>
+
+##attach_begin##
+<tr><th>添付ファイル</th><td>##attach_list##<br>
+※添付できるファイルサイズの上限は [ ##attachment_sizemax_dsp## ] です。<br>
+※添付できるファイルタイプは、[ ##attachment_ext_dsp## ] です。
+</td></tr>
+##attach_end##
+
+</table><p>
+<input type=submit value=→投稿確認画面へ>
+<input type=reset value=初期状態へ戻す><p>
+</form>
+
+<!-- footer -->
