@@ -504,15 +504,18 @@ sub member_list {
     my $p = $FORM{p};
     my $prev;
     if ($FORM{p}) {
+        if ($FORM{"p"} =~ /\D/) {
+            error("member_list: パラメータが不正です(p)。");
+        }
         my $prev_p = $FORM{p} - $page_disp;
-        $prev = "<a href=ml_admin.cgi?list&p=$prev_p&s=$FORM{s}>&lt;&lt; 戻る</a>";
+        $prev = qq|<a href="ml_admin.cgi?list&p=$prev_p&s=$FORM{s}">&lt;&lt; 戻る</a>|;
     } else {
-        $prev = "<font color=#999999>&lt;&lt; 戻る</font>";
+        $prev = qq|<font color=#999999>&lt;&lt; 戻る</font>|;
     }
     my $next;
     if ($FORM{p} + $page_disp <= $cnt_all) {
         my $next_p = $FORM{p} + $page_disp;
-        $next = "<a href=ml_admin.cgi?list&p=$next_p&s=$FORM{s}>進む &gt;&gt;</a>";
+        $next = qq|<a href="ml_admin.cgi?list&p=$next_p&s=$FORM{s}">進む &gt;&gt;</a>|;
     } else {
         $next = "<font color=#999999>進む &gt;&gt;</font>";
     }
@@ -534,7 +537,7 @@ sub member_list {
 <tr><td>$id</td><td>$passwd</td>
 <td><a href=mailto:$email>$email</a></td>
 <td>$reg_date</td>
-<td><a href=ml_admin.cgi?mod&id=$id&p=$FORM{p}&s=$FORM{s}>修正/変更</a></td></tr>
+<td><a href="ml_admin.cgi?mod&id=$id&p=$FORM{p}&s=$FORM{s}">修正/変更</a></td></tr>
 
 HTML
     }
@@ -542,7 +545,7 @@ HTML
 
     printhtml("admin_member_list.html",
      prev=>$prev, next=>$next, page=>$page, list=>$list,
-     (map { $_=>$FORM{$_} } qw(s)),
+     (map { $_=>h($FORM{$_}) } qw(s)),
     );
     exit;
 
@@ -552,6 +555,9 @@ sub mod {
 
     if ($FORM{id} =~ /\D/) {
         error("IDは半角数字のみで指定してください。");
+    }
+    if ($FORM{p} =~ /\D/) {
+        error("mod: パラメータが不正です(p)。");
     }
 
     file_lock();
@@ -566,7 +572,7 @@ sub mod {
 
     printhtml("admin_mod.html", id=>$id, passwd=>$passwd, email=>$email,
      reg_date=>$reg_date, last_update=>$last_update,
-     (map { $_=>$FORM{$_} } qw(p id)),
+     (map { $_=>h($FORM{$_}) } qw(p id)),
     );
     exit;
 
@@ -576,6 +582,9 @@ sub mod2 {
 
     if ($FORM{id} =~ /\D/) {
         error("IDは半角数字のみで指定してください。");
+    }
+    if ($FORM{p} =~ /\D/) {
+        error("mod: パラメータが不正です(p)。");
     }
 
     del() if $FORM{del};
@@ -626,7 +635,11 @@ sub post {
 
 sub reg {
 
-    printhtml("admin_reg.html", p=>$FORM{p});
+    if ($FORM{p} =~ /\D/) {
+        error("reg: パラメータが不正です(p)。");
+    }
+
+    printhtml("admin_reg.html", p=>h($FORM{p}));
     exit;
 
 }
@@ -668,7 +681,7 @@ sub reg2 {
     file_unlock();
 
     printhtml("admin_reg2.html", reg_date=> date_f($now),
-     map { $_ => $FORM{$_} } qw(id passwd email p)
+     map { $_ => h($FORM{$_}) } qw(id passwd email p)
     );
     exit;
 
@@ -688,7 +701,7 @@ sub setup {
      qw(send_intro enable_get_archive enable_post enable_attachment
      add_ml_header add_ml_footer)),
      (map { "attachment:".$_ => ($CONF{attachment} == $_ ? "selected" : "") } (1..5)),
-     (map { $_ => $conf{$_} } qw(k_email fromname title subject_prefix mainpage_info
+     (map { $_ => h($conf{$_}) } qw(k_email fromname title subject_prefix mainpage_info
      attachment_sizemax attachment_ext sendmail ml_dir mainpage home
      ml_header ml_footer)),
     );
